@@ -1,17 +1,15 @@
 import { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import '../../styles.css';
 
 export default class Modal extends Component {
-  // static propTypes = {
-  //   onClose: PropTypes.func.isRequired,
-  //   images: PropTypes.arrayOf(
-  //     PropTypes.shape({
-  //       largeImageURL: PropTypes.string.isRequired,
-  //       tags: PropTypes.string.isRequired,
-  //     }).isRequired
-  //   ),
-  // };
+  static propTypes = {
+    onCloseModal: PropTypes.func.isRequired,
+    currentItem: PropTypes.objectOf({
+      LUrl: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+    }).isRequired,
+  };
 
   componentDidMount() {
     window.addEventListener('keydown', this.onCloseByEscape);

@@ -14,7 +14,6 @@ export default class App extends Component {
     totalImages: 0,
     page: 1,
     isLoading: false,
-    // showModal: false,
     currentItem: null,
   };
 
@@ -32,7 +31,9 @@ export default class App extends Component {
   getImages = () => {
     this.setState({ isLoading: true });
 
-    fetchImages(this.state.searchName, this.state.page)
+    const { searchName, page } = this.state;
+
+    fetchImages(searchName, page)
       .then(({ data }) =>
         this.setState(prevState => ({
           images: [...prevState.images, ...helpers(data.hits)],
